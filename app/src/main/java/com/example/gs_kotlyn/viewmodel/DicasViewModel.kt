@@ -1,3 +1,4 @@
+package com.example.gs_kotlyn.viewmodel
 
 import android.app.Application
 import android.icu.text.CaseMap.Title

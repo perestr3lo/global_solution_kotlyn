@@ -1,4 +1,4 @@
-
+package com.example.gs_kotlyn.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

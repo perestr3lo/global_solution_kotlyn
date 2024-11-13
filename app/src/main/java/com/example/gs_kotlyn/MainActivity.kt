@@ -1,4 +1,4 @@
-
+package com.example.gs_kotlyn
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gs_kotlyn.R
 import com.example.gs_kotlyn.viewmodel.DicasAdapter
+import com.example.gs_kotlyn.viewmodel.DicasViewModel
+import com.example.gs_kotlyn.viewmodel.DicasViewModelFactory
 
 
 /**
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         // Define o título da barra de ação.
-        supportActionBar?.title = "Lista de Compras"
+        supportActionBar?.title = "Lista de Dicas"
 
         // Encontra o RecyclerView pelo seu ID.
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
@@ -55,19 +57,26 @@ class MainActivity : AppCompatActivity() {
 
         // Encontra o botão e o campo de texto pelo seus IDs.
         val button = findViewById<Button>(R.id.button)
-        val editText = findViewById<EditText>(R.id.editText)
+        val editTextTtile = findViewById<EditText>(R.id.editTextTitle)
+        val editTextDescription = findViewById<EditText>(R.id.editTextDescription)
 
         // Define o que acontece quando o botão é clicado.
         button.setOnClickListener {
             // Se o campo de texto estiver vazio, exibe um erro e retorna.
-            if (editText.text.isEmpty()) {
-                editText.error = "Preencha um valor"
+            if (editTextTtile.text.isEmpty()) {
+                editTextTtile.error = "Preencha um valor para o titulo"
+                return@setOnClickListener
+            }
+            if (editTextDescription.text.isEmpty()) {
+                editTextDescription.error = "Preencha um valor para a descricao"
                 return@setOnClickListener
             }
 
+
             // Adiciona o item ao ViewModel e limpa o campo de texto.
-            viewModel.addItem(editText.text.toString())
-            editText.text.clear()
+            viewModel.addItem(editTextTtile.text.toString(), editTextDescription.text.toString())
+            editTextTtile.text.clear()
+            editTextDescription.text.clear()
         }
 
         // Cria uma nova fábrica para o ViewModel.
