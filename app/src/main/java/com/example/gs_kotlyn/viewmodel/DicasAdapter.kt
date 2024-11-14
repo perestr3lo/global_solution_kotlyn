@@ -20,13 +20,14 @@ class DicasAdapter(private val onItemRemoved: (DicaModel) -> Unit) :
 
         // Referências para as views de cada item.
         val textView = view.findViewById<TextView>(R.id.textViewItem)
+        val textViewDescription = view.findViewById<TextView>(R.id.textViewDescription)
         val button = view.findViewById<ImageButton>(R.id.imageButton)
 
 
         fun bind(dica: DicaModel) {
             // Define o texto do TextView para o nome do item.
             textView.text = dica.title
-            textView.text = dica.description
+            textViewDescription.text = dica.description
             button.setOnClickListener {
                 onItemRemoved(dica)
             }

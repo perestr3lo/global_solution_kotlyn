@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
         // Define o título da barra de ação.
-        supportActionBar?.title = "Lista de Dicas"
+        supportActionBar?.title = "EcoDicas"
 
         // Encontra o RecyclerView pelo seu ID.
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
