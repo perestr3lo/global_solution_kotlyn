@@ -9,23 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.gs_kotlyn.R
 import com.example.gs_kotlyn.model.DicaModel
 
-
 class DicasAdapter(private val onItemRemoved: (DicaModel) -> Unit) :
     RecyclerView.Adapter<DicasAdapter.ItemViewHolder>() {
 
-    // Lista de itens que serão exibidos no RecyclerView.
     private var items = listOf<DicaModel>()
+    private var itensFiltrados = listOf<DicaModel>() // Nova lista para itens filtrados
 
     inner class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-        // Referências para as views de cada item.
         val textView = view.findViewById<TextView>(R.id.textViewItem)
         val textViewDescription = view.findViewById<TextView>(R.id.textViewDescription)
         val button = view.findViewById<ImageButton>(R.id.imageButton)
 
-
         fun bind(dica: DicaModel) {
-            // Define o texto do TextView para o nome do item.
             textView.text = dica.title
             textViewDescription.text = dica.description
             button.setOnClickListener {
@@ -34,28 +29,36 @@ class DicasAdapter(private val onItemRemoved: (DicaModel) -> Unit) :
         }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        // Infla o layout do item.
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_tip, parent, false)
-        // Cria e retorna um novo ViewHolder.
         return ItemViewHolder(view)
     }
 
-
-    override fun getItemCount(): Int = items.size
+    // Atualizar para usar itensFiltrados
+    override fun getItemCount(): Int = itensFiltrados.size
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = items[position]
+        val item = itensFiltrados[position]
         holder.bind(item)
     }
 
-
     fun updateDicas(newItems: List<DicaModel>) {
-        // Atualiza a lista de itens.
         items = newItems
-        // Notifica o RecyclerView que os dados mudaram.
+        itensFiltrados = newItems // Atualiza também a lista filtrada
+        notifyDataSetChanged()
+    }
+
+    // Novo método para filtrar itens
+    fun filter(query: String) {
+        itensFiltrados = if (query.isEmpty()) {
+            items // Se a busca estiver vazia, mostra todos os itens
+        } else {
+            items.filter {
+                it.title.contains(query, ignoreCase = true) ||
+                        it.description.contains(query, ignoreCase = true)
+            }
+        }
         notifyDataSetChanged()
     }
 }
