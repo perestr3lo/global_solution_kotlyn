@@ -38,19 +38,3 @@ O EcoDicas é um aplicativo desenvolvido para Android que permite aos usuários:
 - Botões intuitivos
 - Layout responsivo e organizado
 
-## 📦 Estrutura do Projeto
-app/
-├── java/
-│   └── com.example.gs_kotlyn/
-│       ├── model/
-│       │   └── DicaModel.kt
-│       ├── viewmodel/
-│       │   ├── DicasAdapter.kt
-│       │   └── DicasViewModel.kt
-│       └── MainActivity.kt
-└── res/
-├── layout/
-│   ├── activity_main.xml
-│   └── item_tip.xml
-└── values/
-└── colors.xml
