@@ -38,3 +38,14 @@ O EcoDicas é um aplicativo desenvolvido para Android que permite aos usuários:
 - Botões intuitivos
 - Layout responsivo e organizado
 
+## 📸 Screenshots
+
+<div align="center">
+ <img src="photos/Screenshot_20241114_173908.png" alt="Tela inicial" width="300"/>
+ <img src="photos/Screenshot_20241114_174200.png" alt="Adicionando dica" width="300"/>
+ <img src="photos/Screenshot_20241114_174225.png" alt="Buscando dicas" width="300"/>
+ <img src="photos/Screenshot_20241114_174337.png" alt="Buscando dicas" width="300"/>
+ <p>
+   <em>Da esquerda para direita: Tela inicial, Adicionando nova dica, Busca de dicas</em>
+ </p>
+</div>
